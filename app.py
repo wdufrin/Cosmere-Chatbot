@@ -3,6 +3,7 @@ import vertexai
 from vertexai.language_models import ChatModel
 from vertexai.language_models import GroundingSource
 import os
+from vertexai.language_models import ChatModel, InputOutputTextPair
 
 
 app = Flask(__name__)
@@ -12,16 +13,15 @@ LOCATION = "us-central1"
 vertexai.init(project=PROJECT_ID, location=LOCATION)
 
 def create_session():
-    chat_model = ChatModel.from_pretrained("chat-bison@001")
+    chat_model = vertexai.language_models.ChatModel.from_pretrained("chat-bison@001")
     chat = chat_model.start_chat()
     return chat
 
 def response(chat, message):
     parameters = {
         "temperature": 0.2,
-        "max_output_tokens": 256,
-        "top_p": 0.8,
-        "top_k": 40
+        "max_output_tokens": 1024,
+        "top_p": 1
     }
     grounding_source=GroundingSource.VertexAISearch(data_store_id="sunlit2_1704293809107", location="global", project="180054373655")
     result = chat.send_message(message, **parameters,grounding_source=grounding_source)
