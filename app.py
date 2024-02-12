@@ -19,7 +19,7 @@ def create_session():
 
 def response(chat, message):
     parameters = {
-        "temperature": 0.2,
+        "temperature": 0,
         "max_output_tokens": 1024,
         "top_p": 1
     }
