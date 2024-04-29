@@ -108,7 +108,7 @@
           event.preventDefault();
 
           let userInput = document.getElementById("user-input").value;
-          let url = `/palm2?user_input=${encodeURIComponent(userInput)}`;
+          let url = `/chat?user_input=${encodeURIComponent(userInput)}`;
 
           fetch(url)
             .then((response) => response.json())
@@ -118,7 +118,7 @@
               resultDiv.innerHTML = content;
             })
             .catch((error) => {
-              console.error("Error fetching PaLM response:", error);
+              console.error("Error fetching Gemini response:", error);
             });
         });
     };
