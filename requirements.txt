@@ -1,5 +1,5 @@
-google-cloud-aiplatform >= 1.31.0
+google-cloud-aiplatform
 flask
 google-cloud-logging
 vertexai
-vertexai-generative-models
+vertexai.preview.generative_models

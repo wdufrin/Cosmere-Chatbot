@@ -41,9 +41,13 @@ def create_model():
 
 model = create_model()
 
-@app.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['GET', 'POST'])
 def chat():
     user_input = request.json['message']
+    if request.method == 'GET':
+        user_input = request.args.get('message')
+    else:
+        user_input = request.json['message']
     content = multiturn_generate_content(model, user_input)
     return jsonify({'message': content.text})
 
