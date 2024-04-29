@@ -2,4 +2,3 @@ google-cloud-aiplatform
 flask
 google-cloud-logging
 vertexai
-vertexai.preview.generative_models
