@@ -41,6 +41,10 @@ def create_model():
 
 model = create_model()
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/chat', methods=['GET', 'POST'])
 def chat():
     user_input = request.json['message']
